@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import pe.edu.ulima.R
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.ui.Alignment
@@ -66,30 +67,35 @@ public fun GokuProfileScreen(){
     Column(
         modifier = Modifier
             .fillMaxSize()
-                // CONDICIONAL QUE NOS CAMBIA EL BACKGROUND COLOR DEPENDIENTDO EL SYSTEM THEME
-            .background(if(isSystemInDarkTheme()) Gray200 else White200)
+            // CONDICIONAL QUE NOS CAMBIA EL BACKGROUND COLOR DEPENDIENTDO EL SYSTEM THEME
+            .background(if (isSystemInDarkTheme()) Gray200 else White200)
     ){
 
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
+
         ){
             Image(
                 painter = rememberImagePainter(data = "https://sm.ign.com/ign_latam/screenshot/default/goku-ssj-blue-3_6qjv.jpg"),
                 contentDescription = "Goku profile picture",
                 modifier = Modifier
                     .size(150.dp)
-                    .padding(bottom = 10.dp)
-                    .padding(start = 10.dp)
+                    .padding(horizontal = 20.dp)
+                    .padding(bottom = 1.dp)
+                    .padding(start = 15.dp)
                     .clip(CircleShape)
-
-
             )
+
             Column(
                modifier = Modifier
                    .weight(weight = 1f)
                    .align(Alignment.CenterVertically)
-                   .padding(start = 10.dp)
+                   .width(0.dp)
+                   .padding(PaddingValues(1.dp))
+
+
+
 
 
 
@@ -102,6 +108,7 @@ public fun GokuProfileScreen(){
                     fontFamily = coralFont,
                     fontWeight = FontWeight.Bold,
                     fontSize = 25.sp,
+                    color = (if(isSystemInDarkTheme()) White200 else Gray200)
 
 
 
@@ -109,7 +116,8 @@ public fun GokuProfileScreen(){
                 Text(
                     text = "PUBLICACIONES",
                     textAlign = TextAlign.Center,
-                    fontFamily = valentineFont
+                    fontFamily = valentineFont,
+                    color = (if(isSystemInDarkTheme()) White200 else Gray200)
                 )
 
             }
@@ -118,6 +126,8 @@ public fun GokuProfileScreen(){
                 modifier = Modifier
                     .weight(weight = 1f)
                     .align(Alignment.CenterVertically)
+                    .width(0.dp)
+                    .padding(PaddingValues(19.dp))
 
 
 
@@ -127,22 +137,85 @@ public fun GokuProfileScreen(){
                     textAlign = TextAlign.Center,
                     fontFamily = coralFont,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 25.sp
+                    fontSize = 25.sp,
+                    color = (if(isSystemInDarkTheme()) White200 else Gray200)
 
 
                 )
                 Text(
                     text = "SEGUIDOS",
                     textAlign = TextAlign.Center,
-                    fontFamily = valentineFont
+                    fontFamily = valentineFont,
+                    color = (if(isSystemInDarkTheme()) White200 else Gray200)
                 )
 
             }
+            Column(
+                modifier = Modifier
+                    .weight(weight = 1f)
+                    .align(Alignment.CenterVertically)
+                    .width(0.dp)
+                    .padding(start = 5.dp)
+            ){
+                Text(
+                    text = "999",
+                    textAlign = TextAlign.Center,
+                    fontFamily = coralFont,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 25.sp,
+                    color = (if(isSystemInDarkTheme()) White200 else Gray200)
+
+
+
+                )
+                Text(
+                    text = "SEGUIDORES",
+                    textAlign = TextAlign.Center,
+                    fontFamily = valentineFont,
+                    color = (if(isSystemInDarkTheme()) White200 else Gray200)
+                )
 
         }
 
+        }
+
+        Row( modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically) {
+
+
+
+        Button(
+            modifier = Modifier
+                .padding(start = 16.dp, end = 10.dp),
+            onClick = {}) {
+            Text("Editar perfil")
+        }
+
+        Button(
+            modifier = Modifier
+                .padding(start = 16.dp, end = 10.dp),
+            onClick = {}) {
+            Text("Compartir perfil")
+        }
+
+        Button(
+            modifier = Modifier
+                .padding(start = 16.dp, end = 10.dp),
+            onClick = {
+                println("+++++++++++++++++++++++++++++++++++++++")
+                println("+++++++++++++++++++++++++++++++++++++++")
+            }) {
+            Image(
+                painter = painterResource(id = R.drawable.ic_usuario),
+                contentDescription = "Logo Usuario",
+                modifier = Modifier,
+                colorFilter = ColorFilter.tint(
+                    color = if(isSystemInDarkTheme()) Orange200 else Gray200
+                )
+            )
+        }
+        }
 
     }
-
 
 }
