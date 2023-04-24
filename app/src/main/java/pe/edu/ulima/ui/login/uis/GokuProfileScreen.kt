@@ -20,6 +20,7 @@ import coil.compose.rememberImagePainter
 import pe.edu.ulima.R
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.ui.Alignment
@@ -27,14 +28,13 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.LightGray
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import coil.transform.CircleCropTransformation
-import pe.edu.ulima.ui.theme.Gray200
-import pe.edu.ulima.ui.theme.Orange200
-import pe.edu.ulima.ui.theme.White200
+import pe.edu.ulima.ui.theme.*
 
 /*
 Los @ arriba de la funcion se utilizan para generar una vista previa de un componente Composable.
@@ -73,7 +73,8 @@ public fun GokuProfileScreen(){
 
         Row(
             modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceEvenly
 
         ){
             Image(
@@ -81,10 +82,12 @@ public fun GokuProfileScreen(){
                 contentDescription = "Goku profile picture",
                 modifier = Modifier
                     .size(150.dp)
-                    .padding(horizontal = 20.dp)
-                    .padding(bottom = 1.dp)
+                    .padding(horizontal = 20.dp,)
                     .padding(start = 15.dp)
-                    .clip(CircleShape)
+                    .clip(CircleShape),
+
+
+
             )
 
             Column(
@@ -179,6 +182,17 @@ public fun GokuProfileScreen(){
 
         }
 
+        Column(
+            modifier = Modifier
+                .padding(start = 50.dp)
+        ) {
+            Text(
+                text = "SON GOKU",
+                fontFamily = valentineFont,
+                color = (if(isSystemInDarkTheme()) White200 else Gray200)
+            )
+        }
+
         Row( modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically) {
 
@@ -186,36 +200,90 @@ public fun GokuProfileScreen(){
 
         Button(
             modifier = Modifier
-                .padding(start = 16.dp, end = 10.dp),
-            onClick = {}) {
-            Text("Editar perfil")
+                .padding(start = 30.dp, end = 10.dp),
+            onClick = {},
+            colors = ButtonDefaults.buttonColors(backgroundColor = (if(isSystemInDarkTheme()) Teal200 else Purple200))
+        ) {
+            Text("Editar perfil",fontFamily = otonoFont,fontWeight = FontWeight.Bold)
         }
 
         Button(
             modifier = Modifier
-                .padding(start = 16.dp, end = 10.dp),
-            onClick = {}) {
-            Text("Compartir perfil")
+                .padding(start = 10.dp, end = 10.dp),
+            onClick = {},
+            colors = ButtonDefaults.buttonColors(backgroundColor = (if(isSystemInDarkTheme()) Teal200 else Purple200))
+        ) {
+            Text("Compartir perfil",fontFamily = otonoFont,fontWeight = FontWeight.Bold)
         }
 
         Button(
             modifier = Modifier
-                .padding(start = 16.dp, end = 10.dp),
-            onClick = {
-                println("+++++++++++++++++++++++++++++++++++++++")
-                println("+++++++++++++++++++++++++++++++++++++++")
-            }) {
+                .padding(start = 10.dp, end = 10.dp),
+            onClick = {},
+            colors = ButtonDefaults.buttonColors(backgroundColor = (if(isSystemInDarkTheme()) Teal200 else Purple200))
+
+        ) {
             Image(
                 painter = painterResource(id = R.drawable.ic_usuario),
                 contentDescription = "Logo Usuario",
                 modifier = Modifier,
                 colorFilter = ColorFilter.tint(
-                    color = if(isSystemInDarkTheme()) Orange200 else Gray200
+                    color = if(isSystemInDarkTheme()) White200 else Gray200
                 )
             )
         }
-        }
+            
 
+        }
+        Column(
+            modifier = Modifier
+                .padding(start = 15.dp, top = 15.dp),
+
+
+        ) {
+            Text(
+                text = "Historias destacadas",
+                textAlign = TextAlign.Center,
+                fontFamily = caslonFont,
+                fontWeight = FontWeight.Bold,
+                color = (if(isSystemInDarkTheme()) White200 else Gray200),
+                fontSize = 25.sp
+            )
+
+            Text(
+                text = "Guarda tus historias favoritas en el perfil",
+                textAlign = TextAlign.Center,
+                fontFamily = caslonFont,
+                color = (if(isSystemInDarkTheme()) White200 else Gray200),
+                fontSize = 20.sp
+            )
+
+            Image(
+                painter = painterResource(id = R.drawable.ic_mas),
+                contentDescription = "Logo Add",
+                modifier = Modifier
+
+                    .size(100.dp)
+                    .padding(end = 8.dp, top= 10.dp) ,
+
+                colorFilter = ColorFilter.tint(
+                    color = if(isSystemInDarkTheme()) White200 else Gray200
+                )
+
+            )
+
+
+            Text(
+                text = "Nueva",
+                textAlign = TextAlign.Center,
+                fontFamily = caslonFont,
+                color = (if(isSystemInDarkTheme()) White200 else Gray200),
+                modifier = Modifier
+                    .padding(start =21.dp),
+                fontSize = 20.sp
+            )
+
+        }
     }
 
 }
