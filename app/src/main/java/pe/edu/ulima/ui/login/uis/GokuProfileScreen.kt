@@ -291,8 +291,6 @@ public fun GokuProfileScreen(){
             )
 
         }
-    }
-
         sayayines.add(Sayayin("Kokun 1", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
         sayayines.add(Sayayin("Kokun 2", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
         sayayines.add(Sayayin("Kokun 3", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
@@ -313,7 +311,7 @@ public fun GokuProfileScreen(){
                         painter = rememberImagePainter(data = sayayines[(i+1)*3-3].imageUrl),
                         contentDescription = "Foto del sayayin",
 
-                    )
+                        )
                 }
                 if((i+1)*3-2 in sayayines.indices){
                     Image(
@@ -330,5 +328,5 @@ public fun GokuProfileScreen(){
             }
         }
     }
-
 }
+
