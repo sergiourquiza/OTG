@@ -44,6 +44,11 @@ Esto es especialmente útil para la iteración
 rápida en el diseño de la interfaz de usuario.
 */
 
+// Clase que modela los Sayayines que habrán
+data class Sayayin(
+    val nombre: String,
+    val imageUrl: String
+)
 
 //=============================================
 @Preview
@@ -62,6 +67,8 @@ public fun GokuProfileScreen(){
     val coralFont = FontFamily(Font(R.font.coral))
     val valentineFont = FontFamily(Font(R.font.valentine))
     val otonoFont = FontFamily(Font(R.font.otono))
+
+    val sayayines : MutableList<Sayayin> = mutableListOf();
 
 
     Column(
@@ -283,6 +290,44 @@ public fun GokuProfileScreen(){
                 fontSize = 20.sp
             )
 
+        }
+    }
+
+        sayayines.add(Sayayin("Kokun 1", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
+        sayayines.add(Sayayin("Kokun 2", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
+        sayayines.add(Sayayin("Kokun 3", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
+        sayayines.add(Sayayin("Kokun 4", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
+        sayayines.add(Sayayin("Kokun 5", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
+        sayayines.add(Sayayin("Kokun 6", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
+        sayayines.add(Sayayin("Kokun 7", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
+        sayayines.add(Sayayin("Kokun 8", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
+        sayayines.add(Sayayin("Kokun 8", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
+
+        for(i in 0..sayayines.size/3) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ){
+                if((i+1)*3-3 in sayayines.indices){
+                    Image(
+                        painter = rememberImagePainter(data = sayayines[(i+1)*3-3].imageUrl),
+                        contentDescription = "Foto del sayayin",
+
+                    )
+                }
+                if((i+1)*3-2 in sayayines.indices){
+                    Image(
+                        painter = rememberImagePainter(data = sayayines[(i+1)*3-2].imageUrl),
+                        contentDescription = "Foto del sayayin"
+                    )
+                }
+                if((i+1)*3-1 in sayayines.indices){
+                    Image(
+                        painter = rememberImagePainter(data = sayayines[(i+1)*3-1].imageUrl),
+                        contentDescription = "Foto del sayayin"
+                    )
+                }
+            }
         }
     }
 
