@@ -91,10 +91,6 @@ public fun GokuProfileScreen(){
                     .size(150.dp)
                     .padding(horizontal = 20.dp,)
                     .padding(start = 15.dp)
-                    .clip(CircleShape),
-
-
-
             )
 
             Column(
@@ -102,13 +98,8 @@ public fun GokuProfileScreen(){
                    .weight(weight = 1f)
                    .align(Alignment.CenterVertically)
                    .width(0.dp)
-                   .padding(PaddingValues(1.dp))
-
-
-
-
-
-
+                   .padding(PaddingValues(1.dp)),
+                verticalArrangement = Arrangement.Center
             ){
                 Text(
                     modifier = Modifier
@@ -117,16 +108,14 @@ public fun GokuProfileScreen(){
                     textAlign = TextAlign.Center,
                     fontFamily = coralFont,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 25.sp,
+                    fontSize = 20.sp,
                     color = (if(isSystemInDarkTheme()) White200 else Gray200)
-
-
-
                 )
                 Text(
                     text = "PUBLICACIONES",
                     textAlign = TextAlign.Center,
                     fontFamily = valentineFont,
+                    fontSize = 10.sp,
                     color = (if(isSystemInDarkTheme()) White200 else Gray200)
                 )
 
@@ -254,7 +243,7 @@ public fun GokuProfileScreen(){
                 fontFamily = caslonFont,
                 fontWeight = FontWeight.Bold,
                 color = (if(isSystemInDarkTheme()) White200 else Gray200),
-                fontSize = 25.sp
+                fontSize = 23.sp
             )
 
             Text(
@@ -262,7 +251,7 @@ public fun GokuProfileScreen(){
                 textAlign = TextAlign.Center,
                 fontFamily = caslonFont,
                 color = (if(isSystemInDarkTheme()) White200 else Gray200),
-                fontSize = 20.sp
+                fontSize = 18.sp
             )
 
             Image(
@@ -292,37 +281,48 @@ public fun GokuProfileScreen(){
 
         }
         sayayines.add(Sayayin("Kokun 1", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
-        sayayines.add(Sayayin("Kokun 2", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
+        sayayines.add(Sayayin("Kokun 2", "https://static.wikia.nocookie.net/dragonball/images/9/9b/Gogeta_Super_artwork.png/revision/latest/scale-to-width-down/195?cb=20181223195723&path-prefix=es"))
         sayayines.add(Sayayin("Kokun 3", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
         sayayines.add(Sayayin("Kokun 4", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
         sayayines.add(Sayayin("Kokun 5", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
         sayayines.add(Sayayin("Kokun 6", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
         sayayines.add(Sayayin("Kokun 7", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
         sayayines.add(Sayayin("Kokun 8", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
-        sayayines.add(Sayayin("Kokun 8", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
+        sayayines.add(Sayayin("Kokun 9", "https://static.wikia.nocookie.net/dragonball/images/c/c0/Son_Goku_en_Super_Hero.png/revision/latest/scale-to-width-down/222?cb=20220302091733&path-prefix=es"))
 
+        // Ciclo que agregará Row de acuerdo a la cantidad de items
+
+        //Itera desde 0 hasta el tamaño del array dividido en 3 ya que son máx 3 items
+        //por cada fila
         for(i in 0..sayayines.size/3) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ){
+                //Se verifica si la posición existe en los indices existentes del array
+                //Esto para asegurarse que funcione si solo existen 1 o 2 imágenes en un Row
                 if((i+1)*3-3 in sayayines.indices){
                     Image(
                         painter = rememberImagePainter(data = sayayines[(i+1)*3-3].imageUrl),
                         contentDescription = "Foto del sayayin",
-
+                        modifier = Modifier.size(120.dp)
                         )
                 }
+                //Se verifica si la posición existe en los indices existentes del array
+
                 if((i+1)*3-2 in sayayines.indices){
                     Image(
                         painter = rememberImagePainter(data = sayayines[(i+1)*3-2].imageUrl),
-                        contentDescription = "Foto del sayayin"
+                        contentDescription = "Foto del sayayin",
+                        modifier = Modifier.size(120.dp)
                     )
                 }
+                //Se verifica si la posición existe en los indices existentes del array
                 if((i+1)*3-1 in sayayines.indices){
                     Image(
                         painter = rememberImagePainter(data = sayayines[(i+1)*3-1].imageUrl),
-                        contentDescription = "Foto del sayayin"
+                        contentDescription = "Foto del sayayin",
+                        modifier = Modifier.size(120.dp)
                     )
                 }
             }
